@@ -5,274 +5,296 @@
     <title>Customize Your Connection Message</title>
     <style>
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f9fafb;
-        padding: 20px;
-        max-width: 700px;
-        margin: auto;
-        color: #111827;
+        background: linear-gradient(120deg, #f0f4ff 0%, #e0e7ff 100%);
+        min-height: 100vh;
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #22223b;
       }
-
       .header-with-icon {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* space between icon and text */
-  margin-bottom: 20px;
-}
-
-.header-icon {
-  width: 32px; /* or whatever size you want */
-  height: 32px;
-}
-
-
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 24px;
+        justify-content: center;
+        padding-top: 36px;
+        animation: fadeInDown 1s;
+      }
+      .header-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(99,102,241,0.10);
+      }
       h1 {
-        font-size: 1.8rem;
+        font-size: 2.1rem;
+        font-weight: 700;
+        margin: 0;
+        letter-spacing: 1px;
+        color: #6366f1;
       }
-
+      @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .main-card {
+        background: white;
+        border-radius: 18px;
+        box-shadow: 0 2px 16px rgba(99,102,241,0.10);
+        padding: 32px 32px 24px 32px;
+        max-width: 700px;
+        margin: 0 auto 32px auto;
+        animation: fadeIn 1.2s;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
       .instructions {
-        font-size: 0.95rem;
-        line-height: 1.6;
-        background-color: #eef2f7;
-        padding: 15px;
-        border-radius: 8px;
-        margin-bottom: 20px;
+        font-size: 1rem;
+        line-height: 1.7;
+        background: #eef2f7;
+        padding: 18px;
+        border-radius: 10px;
+        margin-bottom: 24px;
+        color: #374151;
+        box-shadow: 0 1px 4px rgba(99,102,241,0.04);
       }
-
       .examples {
         font-family: monospace;
-        background-color: #fff;
-        border-left: 4px solid #3b82f6;
-        padding: 8px 12px;
-        margin: 8px 0;
-        border-radius: 4px;
+        background: #fff;
+        border-left: 4px solid #6366f1;
+        padding: 10px 16px;
+        margin: 10px 0;
+        border-radius: 6px;
+        color: #374151;
       }
-
       label {
         display: flex;
         align-items: center;
-        margin-bottom: 10px;
+        margin-bottom: 14px;
+        font-size: 1.05rem;
+        color: #374151;
       }
-
       input[type="checkbox"] {
-        margin-right: 8px;
+        margin-right: 10px;
+        accent-color: #6366f1;
+        width: 18px;
+        height: 18px;
       }
-
       textarea {
         width: 100%;
         height: 120px;
-        font-size: 1rem;
-        padding: 12px;
-        border: 1px solid #d1d5db;
-        border-radius: 6px;
+        font-size: 1.05rem;
+        padding: 14px;
+        border: 1.5px solid #d1d5db;
+        border-radius: 8px;
         resize: vertical;
+        margin-bottom: 8px;
+        transition: border 0.2s;
+        box-shadow: 0 1px 4px rgba(99,102,241,0.04);
       }
-
+      textarea:focus {
+        border: 1.5px solid #6366f1;
+        outline: none;
+      }
       .char-count {
-        font-size: 0.85rem;
+        font-size: 0.95rem;
         color: #6b7280;
-        margin-top: 5px;
+        margin-top: 2px;
+        margin-bottom: 10px;
+        text-align: right;
       }
-
       button {
-        background-color: #3b82f6;
+        background: linear-gradient(90deg, #6366f1 0%, #60a5fa 100%);
         color: white;
         font-weight: 600;
-        padding: 10px 20px;
+        padding: 12px 28px;
         border: none;
-        border-radius: 6px;
+        border-radius: 8px;
         cursor: pointer;
-        margin-top: 15px;
+        margin-top: 18px;
+        margin-right: 12px;
+        font-size: 1.08rem;
+        box-shadow: 0 2px 8px rgba(99,102,241,0.08);
+        transition: background 0.2s, transform 0.2s;
       }
-
+      button:hover {
+        background: linear-gradient(90deg, #60a5fa 0%, #6366f1 100%);
+        transform: translateY(-2px) scale(1.03);
+      }
       .samples {
-        margin-top: 25px;
+        margin-top: 30px;
       }
-
       .samples h2 {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
         margin-bottom: 10px;
+        color: #6366f1;
       }
-
       .samples p {
-        font-size: 0.9rem;
-        background-color: #f3f4f6;
-        padding: 10px;
-        border-radius: 6px;
+        font-size: 1rem;
+        background: #f3f4f6;
+        padding: 12px;
+        border-radius: 8px;
         font-style: italic;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        transition: background 0.2s, box-shadow 0.2s;
+        box-shadow: 0 1px 4px rgba(99,102,241,0.04);
+        position: relative;
       }
-
-      .disclaimer {
-        margin-top: 15px;
-        font-size: 0.85rem;
-        color: #9ca3af;
+      .samples p:hover {
+        background: #e0e7ff;
+        box-shadow: 0 2px 8px rgba(99,102,241,0.08);
       }
-      .sample-msg {
-  position: relative;
-  padding: 10px;
-  border-radius: 6px;
-  background-color: #f9f9f9;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.sample-msg:hover {
-  background-color: #f0f0f0;
-}
-
-.copied-tooltip {
-  position: absolute;
-  top: -24px;
-  left: 10px;
-  background-color: #4caf50;
-  color: white;
-  padding: 4px 8px;
-  font-size: 12px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  z-index: 999;
-  animation: fadeInOut 2s ease forwards;
-}
-
-@keyframes fadeInOut {
-  0% { opacity: 0; transform: translateY(-4px); }
-  10% { opacity: 1; transform: translateY(0); }
-  90% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(-4px); }
-}
-
-.footer {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 14px;
-  color: #777;
-}
-
-.footer a {
-  color: #0073b1; /* LinkedIn blue */
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.footer a:hover {
-  text-decoration: underline;
-}
-
-.heart {
-  color: red;
-  font-size: 16px;
-  margin: 0 4px;
-}
-
-
+      .copied-tooltip {
+        position: absolute;
+        top: -24px;
+        left: 10px;
+        background: #4caf50;
+        color: white;
+        padding: 4px 10px;
+        font-size: 13px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.10);
+        z-index: 999;
+        animation: fadeInOut 2s ease forwards;
+      }
+      @keyframes fadeInOut {
+        0% { opacity: 0; transform: translateY(-4px); }
+        10% { opacity: 1; transform: translateY(0); }
+        90% { opacity: 1; }
+        100% { opacity: 0; transform: translateY(-4px); }
+      }
+      .footer {
+        text-align: center;
+        margin-top: 48px;
+        font-size: 15px;
+        color: #777;
+        opacity: 0.95;
+        animation: fadeIn 2s;
+      }
+      .footer a {
+        color: #6366f1;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .footer a:hover {
+        text-decoration: underline;
+        color: #1e40af;
+      }
+      .heart {
+        color: red;
+        font-size: 16px;
+        margin: 0 4px;
+      }
+      @media (max-width: 700px) {
+        .main-card { padding: 16px 2vw; }
+        .header-with-icon { flex-direction: column; gap: 8px; padding-top: 18px; }
+        h1 { font-size: 1.3rem; }
+      }
     </style>
   </head>
   <body>
     <div class="header-with-icon">
-  <img src="icons/icon128.png" alt="Logo" class="header-icon" />
-  <h1>Customize Your LinkedIn Message</h1>
-</div>
-
-    <div class="instructions">
-      <p>
-        Use this form to set a default message when sending connection requests
-        via Quick Connect.<br />
-        <p>Just enter your custom message, click on save. Go back to LinkedIn, close the "Add a Note" dialog box and open again.</p>
-        <u>You have to do this <b>only once</b></u>
-      </p>
-      <ul>
-        <li>
-          <strong>firstName</strong> will be replaced with the person's first
-          name.
-        </li>
-        <li>
-          <strong>cmpny</strong> will be replaced with the current company of
-          the person.
-        </li>
-      </ul>
-      <div class="examples">
-        <b>Example 1</b>: Hi <i>firstName</i>, I admire your work at
-        <i>cmpny</i>.<br />
-        <b>Message will become</b>: Hi Shubham, I admire your work at Corp.<br /><br />
-        <b>Example 2</b>: Hey <i>firstName</i>, let's connect! <br />
-        <b>Message will become</b>: Hey Shubham, let's connect!
+      <img src="icons/icon128.png" alt="Logo" class="header-icon" />
+      <h1>Customize Your LinkedIn Message</h1>
+    </div>
+    <div class="main-card">
+      <div class="instructions">
+        <p>
+          Use this form to set a default message when sending connection requests
+          via Quick Connect.<br />
+          <p>Just enter your custom message, click on save. Go back to LinkedIn, close the "Add a Note" dialog box and open again.</p>
+          <u>You have to do this <b>only once</b></u>
+        </p>
+        <ul>
+          <li>
+            <strong>firstName</strong> will be replaced with the person's first
+            name.
+          </li>
+          <li>
+            <strong>cmpny</strong> will be replaced with the current company of
+            the person.
+          </li>
+        </ul>
+        <div class="examples">
+          <b>Example 1</b>: Hi <i>firstName</i>, I admire your work at
+          <i>cmpny</i>.<br />
+          <b>Message will become</b>: Hi Shubham, I admire your work at Corp.<br /><br />
+          <b>Example 2</b>: Hey <i>firstName</i>, let's connect! <br />
+          <b>Message will become</b>: Hey Shubham, let's connect!
+        </div>
+        <p class="disclaimer">
+          Always preview your message before clicking on Send, always
+        </p>
+        <p>
+          On selecting the checkbox below, the message will start with "Hi
+          <i>firstName</i>, ".
+        </p>
+        <div class="examples">
+          <b>Your message</b>: I came across your profile and would love to
+          connect. <br />
+          <b>Message will become</b>: Hi Shubham, I came across your profile and
+          would love to connect.
+        </div>
       </div>
-      <p class="disclaimer">
-        Always preview your message before clicking on Send, always
-      </p>
-      <p>
-        On selecting the checkbox below, the message will start with "Hi
-        <i>firstName</i>, ".
-      </p>
-      <div class="examples">
-        <b>Your message</b>: I came across your profile and would love to
-        connect. <br />
-        <b>Message will become</b>: Hi Shubham, I came across your profile and
-        would love to connect.
+      <label>
+        <input type="checkbox" id="addGreetingToggle" />
+        Add “Hi &lt;firstName&gt;,” to the beginning of your message
+      </label>
+      <textarea
+        id="messageInput"
+        placeholder="Type your message here..."
+      ></textarea>
+      <div class="char-count" id="charCount">Characters: 0 / 300</div>
+      <button id="saveBtn">Save Message</button>
+      <button id="viewHistoryBtn" style="margin-top: 20px;">View Connection History</button>
+      <p id="status" style="color: green"></p>
+      <div class="samples">
+        <h2>Sample Messages:</h2>Click on any message to copy it to your clipboard.
+        <p class="sample-msg">
+          I came across your profile while exploring roles at
+          <i>cmpny</i> and wanted to reach out. I have 8 years of software
+          development experience and recently wrapped up my MBA. I’ve led several
+          end-to-end technical projects and would love to connect and learn more
+          about your work at <i>cmpny</i>.
+        </p>
+        <p class="sample-msg">
+          Hi <i>firstName</i>, Your background in [e.g. product management] and
+          current role at <i>cmpny</i> caught my eye. I'm building my own path in
+          this space and would love to learn from your experiences. Hope we can
+          connect!
+        </p>
+        <p class="sample-msg">
+          Hi <i>firstName</i>, I’m transitioning into [industry/role] and found
+          your journey at <i>cmpny</i> really inspiring. I’d love to connect and
+          perhaps get your perspective on how you navigated your own path. Hope
+          this note finds you well!
+        </p>
+        <p class="sample-msg">
+          Hi <i>firstName</i>, I recently attended a talk/article where
+          <i>cmpny</i> was mentioned and your name came up. I really liked your
+          take on [topic]. I’d love to connect and stay in touch in case you’re
+          open to sharing more insights in the future.
+        </p>
+        <p class="sample-msg">
+          Hi <i>firstName</i>, I’m currently a student exploring roles in
+          [industry] and came across your profile at <i>cmpny</i>. Your career
+          path is something I deeply admire, and I’d love to connect and stay in
+          touch as I learn and grow. Thanks for considering!
+        </p>
       </div>
     </div>
-
-    <label>
-      <input type="checkbox" id="addGreetingToggle" />
-      Add “Hi &lt;firstName&gt;,” to the beginning of your message
-    </label>
-
-    <textarea
-      id="messageInput"
-      placeholder="Type your message here..."
-    ></textarea>
-    <div class="char-count" id="charCount">Characters: 0 / 300</div>
-
-    <button id="saveBtn">Save Message</button>
-    <p id="status" style="color: green"></p>
-
-    <div class="samples">
-      <h2>Sample Messages:</h2>Click on any message to copy it to your clipboard.
-      <p class="sample-msg">
-        I came across your profile while exploring roles at
-        <i>cmpny</i> and wanted to reach out. I have 8 years of software
-        development experience and recently wrapped up my MBA. I’ve led several
-        end-to-end technical projects and would love to connect and learn more
-        about your work at <i>cmpny</i>.
-      </p>
-      <p class="sample-msg">
-        Hi <i>firstName</i>, Your background in [e.g. product management] and
-        current role at <i>cmpny</i> caught my eye. I'm building my own path in
-        this space and would love to learn from your experiences. Hope we can
-        connect!
-      </p>
-      <p class="sample-msg">
-        Hi <i>firstName</i>, I’m transitioning into [industry/role] and found
-        your journey at <i>cmpny</i> really inspiring. I’d love to connect and
-        perhaps get your perspective on how you navigated your own path. Hope
-        this note finds you well!
-      </p>
-      <p class="sample-msg">
-        Hi <i>firstName</i>, I recently attended a talk/article where
-        <i>cmpny</i> was mentioned and your name came up. I really liked your
-        take on [topic]. I’d love to connect and stay in touch in case you’re
-        open to sharing more insights in the future.
-      </p>
-      <p class="sample-msg">
-        Hi <i>firstName</i>, I’m currently a student exploring roles in
-        [industry] and came across your profile at <i>cmpny</i>. Your career
-        path is something I deeply admire, and I’d love to connect and stay in
-        touch as I learn and grow. Thanks for considering!
-      </p>
-    </div>
-
     <footer class="footer">
-  Designed with 
-  <span class="heart" aria-label="love">❤️</span> 
-  by 
-  <a href="https://www.linkedin.com/in/shubham-arya-b19677170/" target="_blank" rel="noopener noreferrer">
-    Shubham Arya
-  </a>
-</footer>
-
-
+      Designed with 
+      <span class="heart" aria-label="love">❤️</span> 
+      by 
+      <a href="https://www.linkedin.com/in/shubham-arya-b19677170/" target="_blank" rel="noopener noreferrer">
+        Shubham Arya
+      </a>
+    </footer>
     <script src="input.js"></script>
-
   </body>
 </html>

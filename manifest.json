@@ -6,7 +6,7 @@
   "permissions": ["scripting", "activeTab", "storage"],
   "web_accessible_resources": [
     {
-      "resources": ["icons/btn-icon.svg"],
+      "resources": ["icons/btn-icon.svg", "history.html"],
       "matches": ["*://www.linkedin.com/*"]
     }
   ],

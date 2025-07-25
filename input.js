@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const status = document.getElementById("status");
   const greetingToggle = document.getElementById("addGreetingToggle");
   const charCount = document.getElementById("charCount");
+  const viewHistoryBtn = document.getElementById("viewHistoryBtn");
 
   function updateCharacterCount() {
     charCount.textContent = `Characters: ${messageInput.value.length} / 300`;
@@ -48,5 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       copiedMsg.remove();
     }, 2000);
+  }
+
+  if (viewHistoryBtn) {
+    viewHistoryBtn.addEventListener("click", () => {
+      window.open("history.html");
+    });
   }
 });

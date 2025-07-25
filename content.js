@@ -226,19 +226,43 @@ function fillNoteMessage(
     return;
   }
 
-  chrome.storage.sync.get(["customMessage", "addGreeting"], (data) => {
-    var message = data.customMessage || defaultMessage;
-    const addGreeting = data.addGreeting;
+  chrome.storage.sync.get(
+    ["customMessage", "addGreeting", "connectionHistory"],
+    (data) => {
+      var message = data.customMessage || defaultMessage;
+      const addGreeting = data.addGreeting;
 
-    message = message.replace(/firstName/g, firstName);
-    message = message.replace(/cmpny/g, company || "");
+      message = message.replace(/firstName/g, firstName);
+      message = message.replace(/cmpny/g, company || "");
 
-    if (addGreeting) {
-      message = `Hi ${firstName}` + ",\n" + message;
+      if (addGreeting) {
+        message = `Hi ${firstName}` + ",\n" + message;
+      }
+      textarea.value = message;
+      textarea.dispatchEvent(new Event("input", { bubbles: true }));
+
+      // --- Analytics: Save to history ---
+      const newEntry = {
+        url: window.location.href,
+        name: firstName, // Only first name available here
+        company: company || "",
+        message: message,
+        date: new Date().toISOString(),
+        status: "pending",
+      };
+      const history = data.connectionHistory || [];
+      // Avoid duplicate entries for the same profile on the same day
+      const isDuplicate = history.some(
+        (entry) =>
+          entry.url === newEntry.url &&
+          entry.date.slice(0, 10) === newEntry.date.slice(0, 10)
+      );
+      if (!isDuplicate) {
+        chrome.storage.sync.set({ connectionHistory: [newEntry, ...history] });
+      }
+      // --- End Analytics ---
     }
-    textarea.value = message;
-    textarea.dispatchEvent(new Event("input", { bubbles: true }));
-  });
+  );
 }
 
 function waitForMoreButtons(firstName, callback) {
