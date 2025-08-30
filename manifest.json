@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "LinkedIn Quick Connect",
-  "version": "1.0",
+  "version": "2.0",
   "description": "Adds a Quick Connect button for faster LinkedIn invites",
   "permissions": ["scripting", "activeTab", "storage"],
   "web_accessible_resources": [
