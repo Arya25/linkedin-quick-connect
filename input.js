@@ -200,6 +200,10 @@ function wireUI() {
       tplLabel.focus();
     });
   });
+  document.getElementById("openHistoryBtn")?.addEventListener("click", () => {
+    const url = chrome.runtime.getURL("history.html");
+    window.open(url, "_blank");
+  });
 }
 
 // Add a tiny “+ New” button next to the title if you didn’t include one in HTML

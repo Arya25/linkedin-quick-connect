@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quick Connect — Connection History</title>
+    <style>
+      :root {
+        --border: #e5e7eb;
+        --bg: #f9fafb;
+        --fg: #111827;
+        --muted: #6b7280;
+        --brand: #1466c2;
+        --radius: 10px;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+        margin: 0;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 18px;
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+      }
+      .title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        font-size: 1.2rem;
+      }
+      .title img {
+        width: 28px;
+        height: 28px;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 16px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+        max-width: 1080px;
+        margin: 16px auto;
+      }
+      .btn {
+        background: var(--brand);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 12px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .icon-btn {
+        border: 1px solid var(--border);
+        background: #fff;
+        border-radius: 8px;
+        padding: 8px 12px;
+        cursor: pointer;
+      }
+      .delete-btn {
+        background: #fee2e2;
+        border: 1px solid #fca5a5;
+        color: #b91c1c;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 8px;
+        border-bottom: 1px solid var(--border);
+      }
+      td.message {
+        white-space: pre-wrap; /* preserve newlines */
+        word-break: break-word; /* break long words/URLs */
+      }
+      .muted {
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="title">
+        <img src="icons/icon128.png" alt="" /> Quick Connect Connection History
+      </div>
+      <div style="display: flex; gap: 8px">
+        <button id="exportHistoryBtn" class="icon-btn">Export CSV</button>
+        <button id="clearHistoryBtn" class="icon-btn delete-btn">Clear</button>
+      </div>
+    </header>
+
+    <section class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>When</th>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Message</th>
+            <th>Profile</th>
+          </tr>
+        </thead>
+        <tbody id="historyBody"></tbody>
+      </table>
+      <p
+        id="historyEmpty"
+        class="muted"
+        style="display: none; margin-top: 10px"
+      >
+        No history yet.
+      </p>
+    </section>
+
+    <script type="module" src="history_view.js"></script>
+  </body>
+</html>
