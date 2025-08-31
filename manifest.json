@@ -13,8 +13,9 @@
   "content_scripts": [
     {
       "matches": ["*://www.linkedin.com/*"],
-      "js": ["content.js"],
-      "css": ["style.css"]
+      "js": ["content.js", "history_recorder.js"],
+      "css": ["style.css"],
+      "run_at": "document_idle"
     }
   ],
   "icons": {

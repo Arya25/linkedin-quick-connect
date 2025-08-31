@@ -487,7 +487,7 @@ async function onPrimaryClick() {
     try {
       await navigator.clipboard.writeText(renderMessage(tpl.text, ctx));
     } catch {}
-    alert(
+    console.error(
       "Couldn’t open Connect dialog. The message was copied to your clipboard."
     );
     return;
@@ -499,14 +499,13 @@ async function onPrimaryClick() {
 
   // Render the message and fill
   const msg = renderMessage(tpl.text, ctx);
-  console.log("Filling message:", msg);
 
   const filled = await fillNoteTextIn(dialog, msg); // <-- await
   if (!filled) {
     try {
       await navigator.clipboard.writeText(msg);
     } catch {}
-    alert(
+    console.error(
       "Couldn’t find note textarea. The message was copied to your clipboard."
     );
   }
