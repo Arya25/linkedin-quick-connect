@@ -2,277 +2,485 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Customize Your Connection Message</title>
+    <title>Quick Connect Templates</title>
     <style>
+      :root {
+        --border: #e5e7eb;
+        --bg: #f9fafb;
+        --fg: #111827;
+        --muted: #6b7280;
+        --brand: #1466c2; /* LinkedIn blue */
+        --radius: 10px;
+      }
+      * {
+        box-sizing: border-box;
+      }
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f9fafb;
-        padding: 20px;
-        max-width: 700px;
-        margin: auto;
-        color: #111827;
+        font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+        margin: 0;
       }
-
-      .header-with-icon {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* space between icon and text */
-  margin-bottom: 20px;
-}
-
-.header-icon {
-  width: 32px; /* or whatever size you want */
-  height: 32px;
-}
-
-
-      h1 {
-        font-size: 1.8rem;
-      }
-
-      .instructions {
-        font-size: 0.95rem;
-        line-height: 1.6;
-        background-color: #eef2f7;
-        padding: 15px;
-        border-radius: 8px;
-        margin-bottom: 20px;
-      }
-
-      .examples {
-        font-family: monospace;
-        background-color: #fff;
-        border-left: 4px solid #3b82f6;
-        padding: 8px 12px;
-        margin: 8px 0;
-        border-radius: 4px;
-      }
-
-      label {
+      header {
         display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 18px;
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      /* How-to section */
+      .howto {
+        background: #eef6fc;
+        border: 1px solid #cce4f6;
+        border-radius: var(--radius);
+        padding: 12px 16px;
+        margin: 16px auto;
+        max-width: 1080px;
+        color: #0a437a;
+        font-size: 14px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+      }
+      .howto h3 {
+        margin: 0 0 6px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #0a66c2;
+      }
+      .howto ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+      .howto li {
+        margin-bottom: 4px;
+      }
+
+      .title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        font-size: 1.2rem;
+      }
+      .title img {
+        width: 28px;
+        height: 28px;
+      }
+      .menu {
+        position: relative;
+      }
+      .icon-btn {
+        background: transparent;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 6px 10px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .menu-panel {
+        position: absolute;
+        right: 0;
+        top: 40px;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        display: none;
+        min-width: 180px;
+      }
+      .menu-panel button {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 10px 14px;
+        background: #fff;
+        border: none;
+        cursor: pointer;
+      }
+      .menu-panel button:hover {
+        background: #f3f4f6;
+      }
+
+      main.container {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 20px;
+        padding: 20px;
+        max-width: 1080px;
+        margin: 0 auto;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 16px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      }
+      h3 {
+        margin: 0 0 12px;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      /* Editor */
+      .field {
+        margin-bottom: 14px;
+      }
+      .field label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 500;
+      }
+      input[type="text"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        font-size: 14px;
+        font-family: inherit;
+      }
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+      .char {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+      .btn {
+        background: var(--brand);
+        color: #fff;
+        border: none;
+        border-radius: var(--radius);
+        padding: 10px 14px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .status {
+        color: green;
+        margin-left: 10px;
+        font-size: 14px;
+      }
+
+      /* Template list */
+      .list-head {
+        display: flex;
+        justify-content: space-between;
         align-items: center;
         margin-bottom: 10px;
       }
-
-      input[type="checkbox"] {
-        margin-right: 8px;
+      .pill {
+        background: #eef2f7;
+        padding: 4px 8px;
+        border-radius: 999px;
+        font-size: 12px;
       }
-
-      textarea {
-        width: 100%;
-        height: 120px;
-        font-size: 1rem;
-        padding: 12px;
-        border: 1px solid #d1d5db;
-        border-radius: 6px;
-        resize: vertical;
+      .trow {
+        display: grid;
+        grid-template-columns: auto 1fr auto auto;
+        align-items: center;
+        gap: 8px;
+        padding: 8px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        margin-bottom: 8px;
+        background: #fafafa;
       }
-
-      .char-count {
-        font-size: 0.85rem;
-        color: #6b7280;
-        margin-top: 5px;
-      }
-
-      button {
-        background-color: #3b82f6;
-        color: white;
+      .trow .label {
         font-weight: 600;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 6px;
+        font-size: 14px;
+      }
+      .trow small {
+        color: var(--muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 180px;
+        display: block;
+      }
+      /* Hide the edit button in the list (since clicking the row already edits) */
+      .trow .icon-btn.sm:nth-last-child(2) {
+        display: none;
+      }
+
+      /* Hover state on row */
+      .trow:hover {
+        background: #f5f7fa;
+        border-color: #dfe3e8;
+      }
+
+      /* Right panel width stays fixed */
+      main.container {
+        grid-template-columns: 1fr 320px;
+      } /* you already have this, keep it */
+
+      /* Keep rows tidy in narrow widths */
+      @media (max-width: 880px) {
+        main.container {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .star {
         cursor: pointer;
-        margin-top: 15px;
+        font-size: 18px;
+        line-height: 1;
+      }
+      .star.default {
+        color: var(--brand); /* LinkedIn blue from your theme */
+        text-shadow: 0 0 4px rgba(10, 102, 194, 0.3);
+      }
+      /* Delete button — soft red */
+      .icon-btn.sm.delete-btn,
+      .btn.delete-btn {
+        background: #fee2e2; /* light red background */
+        border: 1px solid #fca5a5; /* soft red border */
+        color: #b91c1c; /* dark red text */
       }
 
-      .samples {
-        margin-top: 25px;
+      .icon-btn.sm.delete-btn:hover,
+      .btn.delete-btn:hover {
+        background: #fecaca;
+        border-color: #f87171;
       }
 
-      .samples h2 {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
+      .icon-btn.sm {
+        font-size: 14px;
+        padding: 4px 8px;
       }
 
-      .samples p {
-        font-size: 0.9rem;
-        background-color: #f3f4f6;
-        padding: 10px;
-        border-radius: 6px;
-        font-style: italic;
-        margin-bottom: 10px;
+      #clearEditorBtn {
+        background: #e5e7eb;
+        color: var(--fg);
+        margin-left: 10px;
       }
 
-      .disclaimer {
-        margin-top: 15px;
-        font-size: 0.85rem;
-        color: #9ca3af;
+      /* Samples */
+      .samples h3 {
+        margin-top: 0;
       }
       .sample-msg {
-  position: relative;
-  padding: 10px;
-  border-radius: 6px;
-  background-color: #f9f9f9;
-  cursor: pointer;
-  transition: background 0.2s;
-}
+        background: #f9f9f9;
+        border: 1px solid var(--border);
+        padding: 10px;
+        border-radius: var(--radius);
+        cursor: pointer;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+      .sample-msg:hover {
+        background: #f0f0f0;
+      }
 
-.sample-msg:hover {
-  background-color: #f0f0f0;
-}
+      footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      footer a {
+        color: var(--brand);
+        text-decoration: none;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+      /* Prevent horizontal scroll anywhere */
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
 
-.copied-tooltip {
-  position: absolute;
-  top: -24px;
-  left: 10px;
-  background-color: #4caf50;
-  color: white;
-  padding: 4px 8px;
-  font-size: 12px;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  z-index: 999;
-  animation: fadeInOut 2s ease forwards;
-}
+      /* Make the main grid robust: left can shrink; right stays fixed */
+      main.container {
+        /* was: grid-template-columns: 1fr 320px; */
+        grid-template-columns: minmax(0, 1fr) 320px;
+      }
 
-@keyframes fadeInOut {
-  0% { opacity: 0; transform: translateY(-4px); }
-  10% { opacity: 1; transform: translateY(0); }
-  90% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(-4px); }
-}
+      /* Prevent any card from imposing a minimum width */
+      .card {
+        min-width: 0;
+      }
 
-.footer {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 14px;
-  color: #777;
-}
+      /* Inputs never grow beyond parent */
+      input[type="text"],
+      textarea {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+      }
 
-.footer a {
-  color: #0073b1; /* LinkedIn blue */
-  text-decoration: none;
-  font-weight: 500;
-}
+      /* Preview: wrap ANY long tokens/URLs; preserve line breaks */
+      #preview {
+        white-space: pre-wrap; /* keep newlines */
+        word-break: break-word; /* break long words if needed */
+        overflow-wrap: anywhere; /* force-break super-long strings */
+      }
 
-.footer a:hover {
-  text-decoration: underline;
-}
+      /* Template list: ensure text cell can shrink and ellipsize */
+      .trow > div:nth-child(2) {
+        min-width: 0;
+      } /* enables ellipsis */
+      .trow .label,
+      .trow small {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
 
-.heart {
-  color: red;
-  font-size: 16px;
-  margin: 0 4px;
-}
+      /* Keep the delete button inside the row */
+      .trow {
+        grid-template-columns: 24px 1fr auto; /* star | text | delete */
+        overflow: hidden;
+      }
 
-
+      /* Optional: if your editor section still overflows at small widths,
+   allow the layout to stack on narrow screens */
+      @media (max-width: 880px) {
+        main.container {
+          grid-template-columns: 1fr;
+        }
+      }
     </style>
   </head>
   <body>
-    <div class="header-with-icon">
-  <img src="icons/icon128.png" alt="Logo" class="header-icon" />
-  <h1>Customize Your LinkedIn Message</h1>
-</div>
+    <header>
+      <div class="title">
+        <img src="icons/icon128.png" alt="" />
+        Quick Connect Templates Editor
+      </div>
+      <div class="row" style="display: flex; align-items: center; gap: 12px">
+        <label
+          style="display: flex; align-items: center; gap: 6px; font-size: 14px"
+        >
+          <input type="checkbox" id="addGreetingToggle" />
+          <span class="muted">Add “Hi {firstName}, ”</span>
+        </label>
+        <div class="menu">
+          <button class="icon-btn" id="menuBtn">⋮</button>
+          <div class="menu-panel" id="menuPanel">
+            <button id="exportBtn">Export Templates</button>
+            <button id="importBtn">Import Templates</button>
+            <input
+              id="importFile"
+              type="file"
+              accept="application/json"
+              hidden
+            />
+            <button id="resetSamplesBtn">Reset to default template set</button>
+          </div>
+        </div>
+      </div>
+    </header>
 
-    <div class="instructions">
-      <p>
-        Use this form to set a default message when sending connection requests
-        via Quick Connect.<br />
-        <p>Just enter your custom message, click on save. Go back to LinkedIn, close the "Add a Note" dialog box and open again.</p>
-        <u>You have to do this <b>only once</b></u>
-      </p>
+    <section class="howto">
+      <h3>How to use LinkedIn Quick Connect</h3>
       <ul>
+        <li>Create or edit templates in the left editor.</li>
+        <li>Click a template on the right to load it for editing.</li>
+        <li>Click ★ to set a template as default (used on single-click).</li>
         <li>
-          <strong>firstName</strong> will be replaced with the person's first
-          name.
+          The checkbox on the right that says "Add Hi {firstName}" replaces
+          profile's first name in your connection message.
         </li>
+        <li>Use the dropdown menu (⋮) for export, import, or reset.</li>
         <li>
-          <strong>cmpny</strong> will be replaced with the current company of
-          the person.
+          Sample messages are available at the bottom, click one to start a new
+          template.
         </li>
       </ul>
-      <div class="examples">
-        <b>Example 1</b>: Hi <i>firstName</i>, I admire your work at
-        <i>cmpny</i>.<br />
-        <b>Message will become</b>: Hi Shubham, I admire your work at Corp.<br /><br />
-        <b>Example 2</b>: Hey <i>firstName</i>, let's connect! <br />
-        <b>Message will become</b>: Hey Shubham, let's connect!
+    </section>
+
+    <main class="container">
+      <!-- Left: Editor -->
+      <section class="card">
+        <h3 id="editorTitle"></h3>
+        <div class="field">
+          <label for="tplLabel">Label</label>
+          <input
+            id="tplLabel"
+            type="text"
+            placeholder="e.g., Recruiter – short"
+          />
+        </div>
+        <div class="field">
+          <label for="tplText">Message</label>
+          <textarea
+            id="tplText"
+            placeholder="Type your message… (≤ 300 chars)"
+          ></textarea>
+          <div class="char" id="charCount">0 / 300</div>
+        </div>
+        <div class="field">
+          <div class="muted">Preview:</div>
+          <div id="preview" class="card" style="padding: 10px"></div>
+        </div>
+        <div>
+          <button class="btn" id="saveTplBtn">Save</button>
+          <button class="btn" id="clearEditorBtn">
+            Clear editor to create new template
+          </button>
+          <span class="status" id="status"></span>
+        </div>
+      </section>
+
+      <!-- Right: List -->
+      <aside class="card">
+        <div class="list-head">
+          <h3 style="margin: 0">Templates</h3>
+          <span class="pill" id="countPill">0 total</span>
+        </div>
+        <div id="templatesList"></div>
+        <p class="muted" id="emptyMsg" style="display: none">
+          No templates yet. Create one on the left.
+        </p>
+      </aside>
+    </main>
+
+    <!-- Samples -->
+    <section class="card" style="max-width: 1080px; margin: 20px auto">
+      <h3>Sample Messages (click to use)</h3>
+      <div class="sample-msg">
+        I came across your profile while exploring roles at {cmpny} and wanted
+        to reach out. I have 8 years of software development experience and
+        recently wrapped up my MBA. I’d love to connect and learn more about
+        your work at {cmpny}.
       </div>
-      <p class="disclaimer">
-        Always preview your message before clicking on Send, always
-      </p>
-      <p>
-        On selecting the checkbox below, the message will start with "Hi
-        <i>firstName</i>, ".
-      </p>
-      <div class="examples">
-        <b>Your message</b>: I came across your profile and would love to
-        connect. <br />
-        <b>Message will become</b>: Hi Shubham, I came across your profile and
-        would love to connect.
+      <div class="sample-msg">
+        Your background in product management and role at {cmpny} stood out. I'm
+        building my own path in this space and would love to connect.
       </div>
-    </div>
+      <div class="sample-msg">
+        I’m transitioning into [industry/role] and found your journey at {cmpny}
+        inspiring. I’d love to connect and perhaps get your perspective.
+      </div>
+      <div class="sample-msg">
+        I recently attended a talk where {cmpny} was mentioned and your name
+        came up. I liked your take on [topic]. I’d love to connect!
+      </div>
+      <div class="sample-msg">
+        I’m currently a student exploring [industry] and came across your
+        profile at {cmpny}. Your career path is inspiring, and I’d love to
+        connect.
+      </div>
+    </section>
 
-    <label>
-      <input type="checkbox" id="addGreetingToggle" />
-      Add “Hi &lt;firstName&gt;,” to the beginning of your message
-    </label>
-
-    <textarea
-      id="messageInput"
-      placeholder="Type your message here..."
-    ></textarea>
-    <div class="char-count" id="charCount">Characters: 0 / 300</div>
-
-    <button id="saveBtn">Save Message</button>
-    <p id="status" style="color: green"></p>
-
-    <div class="samples">
-      <h2>Sample Messages:</h2>Click on any message to copy it to your clipboard.
-      <p class="sample-msg">
-        I came across your profile while exploring roles at
-        <i>cmpny</i> and wanted to reach out. I have 8 years of software
-        development experience and recently wrapped up my MBA. I’ve led several
-        end-to-end technical projects and would love to connect and learn more
-        about your work at <i>cmpny</i>.
-      </p>
-      <p class="sample-msg">
-        Hi <i>firstName</i>, Your background in [e.g. product management] and
-        current role at <i>cmpny</i> caught my eye. I'm building my own path in
-        this space and would love to learn from your experiences. Hope we can
-        connect!
-      </p>
-      <p class="sample-msg">
-        Hi <i>firstName</i>, I’m transitioning into [industry/role] and found
-        your journey at <i>cmpny</i> really inspiring. I’d love to connect and
-        perhaps get your perspective on how you navigated your own path. Hope
-        this note finds you well!
-      </p>
-      <p class="sample-msg">
-        Hi <i>firstName</i>, I recently attended a talk/article where
-        <i>cmpny</i> was mentioned and your name came up. I really liked your
-        take on [topic]. I’d love to connect and stay in touch in case you’re
-        open to sharing more insights in the future.
-      </p>
-      <p class="sample-msg">
-        Hi <i>firstName</i>, I’m currently a student exploring roles in
-        [industry] and came across your profile at <i>cmpny</i>. Your career
-        path is something I deeply admire, and I’d love to connect and stay in
-        touch as I learn and grow. Thanks for considering!
-      </p>
-    </div>
-
-    <footer class="footer">
-  Designed with 
-  <span class="heart" aria-label="love">❤️</span> 
-  by 
-  <a href="https://www.linkedin.com/in/shubham-arya-b19677170/" target="_blank" rel="noopener noreferrer">
-    Shubham Arya
-  </a>
-</footer>
-
+    <footer>
+      Designed with ❤️ by
+      <a
+        href="https://www.linkedin.com/in/shubham-arya-b19677170/"
+        target="_blank"
+        >Shubham Arya</a
+      >
+    </footer>
 
     <script src="input.js"></script>
-
   </body>
 </html>
